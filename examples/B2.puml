@@ -1,0 +1,19 @@
+@startuml
+title LUONG B2 - pilot, ca con <= 12h - CHI duoc goi Care Desk
+actor T as "Therapist"
+participant API
+participant Voice
+actor CD as "Care Desk"
+participant Slack
+T -> API : Reschedule
+API --> T : chi co\nCall CareDesk\n(urgent)
+T -> API : Call CareDesk
+API -> Voice : goi
+Voice -> CD : ring
+alt bat may
+  CD -> API : tu doi lich\ntren admin
+  API -> API : case RESOLVED_\nCARE_DESK
+else khong bat may
+  API -> Slack : URGENT\nescalation
+end
+@enduml

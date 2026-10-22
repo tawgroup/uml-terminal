@@ -1,0 +1,14 @@
+@startuml
+title LUONG A - therapist ngoai pilot - "bam la xong"
+actor T as "Therapist"
+participant API
+database DB
+participant SMS
+actor C as "Client"
+T -> API : Reschedule\n+ gio moi\n(reason tuy chon)
+API -> API : check trung lich,\ndate range
+API -> DB : doi start/end
+API -> SMS : "moved to <gio moi>"
+SMS -> C : thong bao\n(khong hoi)
+API --> T : xong
+@enduml

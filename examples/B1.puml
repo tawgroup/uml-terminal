@@ -1,0 +1,35 @@
+@startuml
+title LUONG B1 - pilot, ca con > 12h - phai GOI client
+actor T as "Therapist"
+participant API
+participant Voice
+actor C as "Client"
+participant AI
+participant SMS
+T -> API : Reschedule
+API --> T : Call client /\nCall CareDesk /\nKeep
+T -> API : Call client
+API -> Voice : goi (ghi am)
+Voice -> C : ring
+alt bat may
+  T -> API : gio da\nthoa thuan
+  API -> AI : transcript\ndong y chua?
+  alt conf >= 0.85
+    API -> API : doi lich
+    API -> SMS : "moved,\nas agreed"
+    SMS -> C : SMS
+  else khong ro
+    API -> API : giu ca goc\nSlack CareDesk
+  end
+else voicemail / khong bat may
+  T -> API : Call CareDesk
+  alt CareDesk cung khong bat may
+    T -> API : SMS 1-3 slot
+    API -> SMS : "reply 1,2,3"
+    SMS -> C : SMS
+    C -> SMS : "2"
+    SMS -> API : inbound
+    API -> API : recheck slot\ndoi lich
+  end
+end
+@enduml
