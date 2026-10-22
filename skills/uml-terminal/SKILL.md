@@ -72,7 +72,7 @@ end
   only if the user's terminal cannot show unicode.
 - Vietnamese without diacritics inside the diagram (`gio moi`, `bat may`) renders more
   predictably than with; keep diacritics for the prose around it.
-- Numbers that matter ("103/190 cases land here") go in the title or the prose, not in a
+- Numbers that matter ("most cases land here") go in the title or the prose, not in a
   floating note.
 
 ## Install (once per machine)
