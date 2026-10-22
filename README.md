@@ -1,6 +1,6 @@
 # uml-terminal
 
-Skill `uml-terminal` cho Claude Code, Codex, Cursor và Antigravity.
+Skill `uml-terminal` cho Claude Code, Codex, OpenCode, Cursor và Antigravity.
 
 Bắt agent **vẽ luồng ra ngay terminal** thay vì tả bằng chữ: viết PlantUML sequence diagram, render bằng `plantuml -tutxt` thành box-drawing unicode (`┌─┐ ╔═╗ ─>`), dán vào câu trả lời trong fenced code block. Không HTML, không Artifact, không PNG. Nói "vẽ luồng", "vẽ sơ đồ", "draw the flow", "minh họa cho tôi" là nó vẽ.
 
@@ -52,18 +52,22 @@ cd uml-terminal
 ./install.sh
 ```
 
-Script tạo symlink vào 4 chỗ:
+Script tạo symlink vào 6 chỗ:
 
 - `~/.claude/skills/uml-terminal` — Claude Code, mọi project
-- `~/.agents/skills/uml-terminal` — Codex
+- `~/.agents/skills/uml-terminal` — chuẩn chung `.agents` (Codex và các agent đọc SKILL.md)
+- `~/.codex/skills/uml-terminal` — Codex CLI
+- `~/.config/opencode/skills/uml-terminal` — OpenCode
 - `~/.cursor/skills/uml-terminal` — Cursor
 - `~/.gemini/config/skills/uml-terminal` — Antigravity CLI (`agy`)
 
-Symlink chứ không copy. Sửa file trong repo là cả 4 harness thấy ngay.
+Symlink chứ không copy. Sửa file trong repo là cả 6 harness thấy ngay.
+
+OpenCode không có slash command cho skill: gõ "vẽ luồng …" là agent tự nạp qua tool `skill`; muốn gọi tay thì `/uml-terminal` sẽ không hiện trong menu, đó là bình thường.
 
 Nếu đã có bản copy cũ ở đó, script đổi tên thành `uml-terminal.bak` rồi mới link. Xoá `.bak` sau khi kiểm tra.
 
-Cài xong thoát hẳn Claude Code / Codex / Cursor / `agy` rồi mở lại. Skill chỉ nạp lúc khởi động.
+Cài xong thoát hẳn Claude Code / Codex / OpenCode / Cursor / `agy` rồi mở lại. Skill chỉ nạp lúc khởi động.
 
 ## Gỡ
 
